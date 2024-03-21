@@ -9,7 +9,7 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixvim }:
   let
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
