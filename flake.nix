@@ -19,6 +19,7 @@
         # Include the results of the hardware scan.
         nixvim.nixDarwinModules.nixvim
         ./modules/allow-unfree.nix
+	./modules/nix-direnv.nix
 	./modules/nvim.nix
       ];
 
