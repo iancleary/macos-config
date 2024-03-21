@@ -32,7 +32,7 @@
 	  nodejs_18
 
 	  # For terminal output with chezmoi dotfiles...merging over to this config
-	  ruby
+	  colorls
         ];
 
       # Auto upgrade nix package and the daemon service.
