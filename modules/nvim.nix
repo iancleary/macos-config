@@ -7,6 +7,7 @@
     plugins = {
       lightline.enable = true;
       neo-tree.enable = true;
+      rustaceanvim.enable = true;
     };
 
     # https://neovim.io/doc/user/options.html
