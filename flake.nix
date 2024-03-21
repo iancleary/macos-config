@@ -18,12 +18,14 @@
       imports = [
         # Include the results of the hardware scan.
         nixvim.nixDarwinModules.nixvim
-        ./modules/nvim.nix
+        ./modules/allow-unfree.nix
+	./modules/nvim.nix
       ];
 
       environment.systemPackages = with pkgs;
         [ 
           just
+
         ];
 
       # Auto upgrade nix package and the daemon service.
