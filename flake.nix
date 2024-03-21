@@ -5,17 +5,25 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixvim }:
   let
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
+
+      imports = [
+        # Include the results of the hardware scan.
+        nixvim.nixDarwinModules.nixvim
+        ./modules/nvim.nix
+      ];
+
       environment.systemPackages = with pkgs;
         [ 
           just
-          neovim
         ];
 
       # Auto upgrade nix package and the daemon service.
