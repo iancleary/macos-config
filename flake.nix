@@ -14,14 +14,30 @@
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
+
+      imports = [
+        # Include the results of the hardware scan.
+        nixvim.nixDarwinModules.nixvim
+      ];
+
       environment.systemPackages = with pkgs;
         [ 
           just
-          neovim
         ];
 
       programs.nixvim = {
-        plugins.lightline.enable = true;
+        enable = true;
+        
+        plugins = {
+          lightline.enable = true;
+        };
+        
+        # https://neovim.io/doc/user/options.html
+        options = {
+          number = true;         # Show line numbers
+          relativenumber = false; # Show relative line numbers
+          shiftwidth = 2;        # Tab width should be 2
+        };
       };
 
       # Auto upgrade nix package and the daemon service.
