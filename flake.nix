@@ -26,7 +26,7 @@
       environment.systemPackages = with pkgs;
         [ 
           just
-
+          graphite-cli
         ];
 
       # Auto upgrade nix package and the daemon service.
