@@ -1,3 +1,6 @@
+# list recipes
+help:
+  just --list
 
 # Initial Setup Step 1
 step1-setup:
