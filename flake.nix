@@ -18,28 +18,13 @@
       imports = [
         # Include the results of the hardware scan.
         nixvim.nixDarwinModules.nixvim
+        ./modules/nvim.nix
       ];
 
       environment.systemPackages = with pkgs;
         [ 
           just
         ];
-
-      programs.nixvim = {
-        enable = true;
-        
-        plugins = {
-          lightline.enable = true;
-          neo-tree.enable = true;
-        };
-        
-        # https://neovim.io/doc/user/options.html
-        options = {
-          number = true;         # Show line numbers
-          relativenumber = false; # Show relative line numbers
-          shiftwidth = 2;        # Tab width should be 2
-        };
-      };
 
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
