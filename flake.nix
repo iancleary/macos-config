@@ -5,11 +5,20 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    # home-manager.url = "github:nix-community/home-manager";
+    # home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # nixvim.url = "github:nix-community/nixvim";
+    # nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    flake-hello-world.url = "github:iancleary/flake-hello-world";
+    flake-hello-world.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixvim }:
+  outputs = inputs@{ self
+    , nixpkgs
+    , nix-darwin
+    # , home-manager
+    , flake-hello-world
+    }:
   let
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
@@ -17,10 +26,10 @@
 
       imports = [
         # Include the results of the hardware scan.
-        nixvim.nixDarwinModules.nixvim
+        # nixvim.nixDarwinModules.nixvim
         ./modules/allow-unfree.nix
         ./modules/nix-direnv.nix
-        ./modules/nvim.nix
+        inputs.flake-hello-world.nixosModules.default
       ];
 
       environment.systemPackages = with pkgs;
