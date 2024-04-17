@@ -3,8 +3,10 @@
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "iancleary";
-  home.homeDirectory = lib.mkForce "/Users/iancleary"; # lib.mkForce allows for user to already exist
+  home = rec {
+    username = "iancleary";
+    homeDirectory = lib.mkForce "/Users/${username}"; # lib.mkForce allows for user to already exist
+  };
 
   # Packages that should be installed to the user profile.
   home.packages = [
