@@ -19,8 +19,8 @@
         # Include the results of the hardware scan.
         nixvim.nixDarwinModules.nixvim
         ./modules/allow-unfree.nix
-	./modules/nix-direnv.nix
-	./modules/nvim.nix
+        ./modules/nix-direnv.nix
+        ./modules/nvim.nix
       ];
 
       environment.systemPackages = with pkgs;
@@ -28,14 +28,14 @@
           just
           graphite-cli
 
-	  # VS Code (for extensions)
-	  nodejs_18
+          # VS Code (for extensions)
+          nodejs_18
 
-	  # For terminal output with chezmoi dotfiles...merging over to this config
-	  colorls
+          # For terminal output with chezmoi dotfiles...merging over to this config
+          colorls
 
-	  # while migrating dotfiles
-	  chezmoi
+          # while migrating dotfiles
+          chezmoi
         ];
 
       # Auto upgrade nix package and the daemon service.
@@ -63,11 +63,11 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#eMacOS
-    darwinConfigurations."eMacOS" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."macbookAir" = nix-darwin.lib.darwinSystem {
       modules = [ configuration ];
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."eMacOS".pkgs;
+    darwinPackages = self.darwinConfigurations."macbookAir".pkgs;
   };
 }
