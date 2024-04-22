@@ -67,6 +67,7 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#eMacOS
     darwinConfigurations."macbookAir" = nix-darwin.lib.darwinSystem {
+      system = "aarhc64-darwin";
       modules = [ 
         configuration
         home-manager.darwinModules.home-manager
