@@ -13,7 +13,6 @@
     , nixpkgs
     , nix-darwin
     , home-manager
-    , flake-hello-world
     }:
   let
     configuration = { pkgs, ... }: {
