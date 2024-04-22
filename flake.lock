@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "flake-hello-world": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1711670623,
-        "narHash": "sha256-tblVbh1eiLMy80eZPYDp1AMiR8OlZIjntA2hJpVS+YA=",
-        "owner": "iancleary",
-        "repo": "flake-hello-world",
-        "rev": "378d10011a3476cbe48c07c66c75663c547600db",
-        "type": "github"
-      },
-      "original": {
-        "owner": "iancleary",
-        "repo": "flake-hello-world",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -78,7 +58,6 @@
     },
     "root": {
       "inputs": {
-        "flake-hello-world": "flake-hello-world",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs"
