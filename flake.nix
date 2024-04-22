@@ -73,11 +73,10 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.iancleary = import ./modules/home-manager/default.nix;
-
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
+        ./modules/home-manager
       ];
       specialArgs = { inherit inputs; };
     };
