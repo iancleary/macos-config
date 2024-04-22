@@ -7,10 +7,6 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # nixvim.url = "github:nix-community/nixvim";
-    # nixvim.inputs.nixpkgs.follows = "nixpkgs";
-    flake-hello-world.url = "github:iancleary/flake-hello-world";
-    flake-hello-world.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self
@@ -29,7 +25,6 @@
         # nixvim.nixDarwinModules.nixvim
         ./modules/allow-unfree.nix
         ./modules/nix-direnv.nix
-        inputs.flake-hello-world.nixosModules.default
       ];
 
       environment.systemPackages = with pkgs;
@@ -79,7 +74,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.iancleary = import ./home.nix;
+            home-manager.users.iancleary = import ./modules/home-manager;
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
