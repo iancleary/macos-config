@@ -73,12 +73,13 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.iancleary = import ./modules/home-manager;
+            home-manager.users.iancleary = import ./modules/home-manager/default.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
       ];
+      specialArgs = { inherit inputs; };
     };
 
     # Expose the package set, including overlays, for convenience.
