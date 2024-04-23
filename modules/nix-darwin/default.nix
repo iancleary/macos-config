@@ -15,12 +15,6 @@
 
       # VS Code (for extensions)
       nodejs_18
-
-      # For terminal output with chezmoi dotfiles...merging over to this config
-      colorls
-
-      # while migrating dotfiles
-      chezmoi
     ];
 
   # Auto upgrade nix package and the daemon service.
