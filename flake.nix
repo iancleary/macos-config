@@ -74,6 +74,7 @@
           inherit (nixpkgs-unstable.legacyPackages.${prev.system}) neovim-unwrapped;
         };
         neovimPlugins = neovim-plugins.overlays.default;
+    };
   in
   {
     # Build darwin flake using:
