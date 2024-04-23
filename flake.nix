@@ -92,7 +92,7 @@
     # $ darwin-rebuild build --flake .#eMacOS
     darwinConfigurations."macbookAir" = nix-darwin.lib.darwinSystem {
       pkgs = legacyPackages."aarch64-darwin";
-      system = "aarhc64-darwin";
+      system = "aarch64-darwin";
       modules = [ 
         configuration
         home-manager.darwinModules.home-manager
