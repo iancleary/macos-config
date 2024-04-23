@@ -2,17 +2,23 @@
   description = "Example Darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    neovim-plugins = {
+      url = "github:LongerHV/neovim-plugins-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self
     , nixpkgs
     , nix-darwin
     , home-manager
+    , neovim-plugins
     }:
   let
     configuration = { pkgs, ... }: {
@@ -62,6 +68,12 @@
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
     };
+    overlays = {
+        unstable = final: prev: {
+          unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+          inherit (nixpkgs-unstable.legacyPackages.${prev.system}) neovim-unwrapped;
+        };
+        neovimPlugins = neovim-plugins.overlays.default;
   in
   {
     # Build darwin flake using:
