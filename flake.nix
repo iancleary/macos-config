@@ -48,7 +48,9 @@
       pkgs = legacyPackages."aarch64-darwin";
       system = "aarch64-darwin";
       modules = [
-        ./modules/nix-darwin/default.nix
+        ./modules/nix-darwin/default.nix # nix-darwin configuration
+
+        # home-manager configuration
         home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -58,9 +60,9 @@
             # arguments to home.nix
           }
         
-        ./home-manager/default.nix # myHome definition
+        ./home-manager/default.nix # myHome attribute set definition
       ];
-      specialArgs = { inherit inputs self; };
+      specialArgs = { inherit inputs self; }; # Passes the flake inputs to the modules
     };
 
     # Expose the package set, including overlays, for convenience.
