@@ -4,9 +4,6 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # https://github.com/nix-community/nix-direnv
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
