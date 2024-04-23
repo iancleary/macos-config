@@ -14,6 +14,6 @@
 
   # Rest of the configuration is in a separate folder.
   imports = [
-    ./myHome;
+    ./myHome
   ];
 }
