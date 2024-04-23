@@ -60,7 +60,7 @@
         
         ./home-manager/default.nix # myHome definition
       ];
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs self; };
     };
 
     # Expose the package set, including overlays, for convenience.
