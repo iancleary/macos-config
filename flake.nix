@@ -16,6 +16,7 @@
 
   outputs = inputs@{ self
     , nixpkgs
+    , nixpkgs-unstable
     , nix-darwin
     , home-manager
     , neovim-plugins
