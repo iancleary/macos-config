@@ -13,5 +13,7 @@
   programs.home-manager.enable = true;
 
   # Rest of the configuration is in a separate folder.
-  myHome = import ./myHome;
+  imports = [
+    ./myHome;
+  ];
 }
