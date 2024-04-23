@@ -2,6 +2,7 @@
   description = "Example Darwin system flake";
 
   inputs = {
+    flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
@@ -15,6 +16,7 @@
   };
 
   outputs = inputs@{ self
+    , flake-utils
     , nixpkgs
     , nixpkgs-unstable
     , nix-darwin
@@ -22,6 +24,7 @@
     , neovim-plugins
     }:
   let
+    forAllSystems = nixpkgs.lib.genAttrs flake-utils.lib.defaultSystems;
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
@@ -76,6 +79,13 @@
         };
         neovimPlugins = neovim-plugins.overlays.default;
     };
+
+    legacyPackages = forAllSystems (system:
+        import inputs.nixpkgs {
+            inherit system;
+            overlays = builtins.attrValues overlays;
+        }
+    );
   in
   {
     # Build darwin flake using:
