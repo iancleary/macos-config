@@ -1,4 +1,4 @@
-{ config, lib, ... }: 
+{ lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -14,6 +14,6 @@
 
   # Rest of the configuration is in a separate folder.
   imports = [
-    ./myHome
+    ./myTerminal
   ];
 }
