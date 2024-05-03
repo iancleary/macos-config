@@ -11,17 +11,15 @@ step1-setup:
 
 # Initial Setup Step 2
 step2-install:
-  nix run nix-darwin -- switch --flake '.?submodules=1'
+  nix run nix-darwin -- switch --flake .
 
 # Initial Setup Step 3
 step3-switch:
-  git submodule update --init --recursive
-  darwin-rebuild switch --flake '.?submodules=1'
+  darwin-rebuild switch --flake .
 
 # Apply changes to system per flake
 switch:
-  git submodule update --init --recursive
-  darwin-rebuild switch --flake '.?submodules=1'
+  darwin-rebuild switch --flake .
 
 # Update flake
 update:
