@@ -25,8 +25,8 @@
     overlays = {
         unstable = final: prev: {
           unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-          # inherit (nixpkgs-unstable.legacyPackages.${prev.system}) neovim-unwrapped;
         };
+        neovimPlugins = terminal-config.overlays.default;
     };
 
     legacyPackages = forAllSystems (system:
