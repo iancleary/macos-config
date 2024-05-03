@@ -9,10 +9,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-plugins = {
-      url = "github:LongerHV/neovim-plugins-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    terminal-config.url = "github:iancleary/terminal-config";
   };
 
   outputs = inputs@{ self
@@ -21,16 +18,15 @@
     , nixpkgs-unstable
     , nix-darwin
     , home-manager
-    , neovim-plugins
+    , terminal-config
     }:
   let
     forAllSystems = nixpkgs.lib.genAttrs flake-utils.lib.defaultSystems;
     overlays = {
         unstable = final: prev: {
           unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-          inherit (nixpkgs-unstable.legacyPackages.${prev.system}) neovim-unwrapped;
+          # inherit (nixpkgs-unstable.legacyPackages.${prev.system}) neovim-unwrapped;
         };
-        neovimPlugins = neovim-plugins.overlays.default;
     };
 
     legacyPackages = forAllSystems (system:
@@ -59,7 +55,7 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
-        
+        inputs.terminal-config.nixosModules.default
         ./home-manager/default.nix # myTerminal attribute set definition
       ];
       specialArgs = { inherit inputs self; }; # Passes the flake inputs to the modules
