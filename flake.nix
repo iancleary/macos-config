@@ -52,6 +52,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.iancleary = import ./modules/home-manager/default.nix;
+
+            # This (below) is required to pass the flake inputs to the modules, 
+            # so the remote terminal-config flake can be used
+            home-manager.extraSpecialArgs = { inherit inputs self; }; # Passes the flake inputs to the modules
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
