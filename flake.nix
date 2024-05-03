@@ -55,7 +55,6 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
-        inputs.terminal-config.nixosModules.default
         ./home-manager/default.nix # myTerminal attribute set definition
       ];
       specialArgs = { inherit inputs self; }; # Passes the flake inputs to the modules
