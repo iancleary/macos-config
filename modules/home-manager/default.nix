@@ -16,4 +16,13 @@
   imports = [
     inputs.terminal-config.homeManagerModules.default
   ];
+
+  myTerminal = {
+    neovim = {
+      enable = true;
+      enableLSP = true;
+    };
+    zsh.enable = true;
+  };
+
 }
