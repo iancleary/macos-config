@@ -1,0 +1,3 @@
+[submodule "modules/home-manager/myTerminal"]
+	path = modules/home-manager/myTerminal
+	url = git@github.com:iancleary/terminal-config.git
