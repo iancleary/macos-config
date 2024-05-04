@@ -65,5 +65,11 @@
 
     # Expose the package set, including overlays, for convenience.
     darwinPackages = self.darwinConfigurations."macbookAir".pkgs;
+
+    devShells = forAllSystems (system: {
+      lint = nixpkgs.legacyPackages.${system}.callPackage ./shells/lint.nix { };
+    });
+
+    formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixpkgs-fmt);
   };
 }
