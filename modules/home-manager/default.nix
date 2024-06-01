@@ -6,7 +6,7 @@
   home = rec {
     username = "iancleary";
     homeDirectory = lib.mkForce "/Users/${username}"; # lib.mkForce allows for user to already exist
-    stateVersion = lib.mkDefault "23.11";
+    stateVersion = lib.mkDefault "24.05";
   };
 
   # Let Home Manager install and manage itself.

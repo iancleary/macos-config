@@ -3,7 +3,7 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -55,9 +55,11 @@
               useUserPackages = true;
               users.iancleary = import ./modules/home-manager/default.nix;
 
-              # This (below) is required to pass the flake inputs to the modules, 
+              # This (below) is required to pass the flake inputs to the modules,
               # so the remote terminal-config flake can be used
-              extraSpecialArgs = { inherit inputs self; }; # Passes the flake inputs to the modules
+              extraSpecialArgs = { inherit inputs self; };
+              # Passes the flake inputs to the modules
+
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix
             };
